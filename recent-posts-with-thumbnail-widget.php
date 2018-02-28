@@ -52,10 +52,10 @@ class neatly_recent_posts_thumbnail extends WP_Widget {
     
       /* Outputting our widget on the front end
       =============================================*/
-      echo '<style>
+      /*echo '<style>
           .neatly-recent ul, .neatly-recent li { list-style:none; margin:0; }
           .neatly-recent li { margin-bottom: 1em; }
-          </style>';
+          </style>';*/
           
             echo $before_widget . $before_title;
             if ( ! empty ( $title ) ) {
@@ -68,16 +68,42 @@ class neatly_recent_posts_thumbnail extends WP_Widget {
         );
         $neatly_posts = new WP_Query($args);
         if( $neatly_posts->have_posts() ) {
-          echo '<ul>';
           while( $neatly_posts->have_posts() ) : $neatly_posts->the_post(); ?>
-            <li>
-              <a href="<?php the_permalink(); ?>">
-                <?php if ( has_post_thumbnail() ) : the_post_thumbnail($thumbsize); endif; ?>
-                <?php if ( $show_title == true ) : ?><h4><?php the_title(); ?></h4><?php endif; ?>
-                <?php if ( $show_date == true ) : ?><span><?php the_date(); ?></span><?php endif; ?>
-                <?php if ( $show_read_more == true ) : ?><span class="neatly--read-more">Read more</span><?php endif; ?>
-              </a>
-            </li>
+          <?php if(has_post_thumbnail()): ?>
+          <div class="media">
+            <div class="media-left">
+                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail($thumbsize, ['class' => 'media-object', 'style' => 'width: 100px;']); ?></a>
+            </div>
+            <div class="media-body">
+                <?php if($show_title == true): ?>
+                <h5 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+                <?php endif; ?>
+
+                <?php if($show_date == true): ?>
+                <p><?php the_date(); ?></p>
+                <?php endif; ?>
+
+	            <?php if($show_read_more == true): ?>
+                    <p><a href="<?php the_permalink(); ?>">Read more</a></p>
+	            <?php endif; ?>
+            </div>
+          </div>
+          <?php else: ?>
+            <div>
+	            <?php if($show_title == true): ?>
+                    <h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+	            <?php endif; ?>
+
+	            <?php if($show_date == true): ?>
+                    <p><?php the_date(); ?></p>
+	            <?php endif; ?>
+
+	            <?php if($show_read_more == true): ?>
+                    <p><a href="<?php the_permalink(); ?>">Read more</a></p>
+	            <?php endif; ?>
+            </div>
+          <?php endif; ?>
+
           <?php endwhile;
         }
         
