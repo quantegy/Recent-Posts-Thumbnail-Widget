@@ -76,15 +76,15 @@ class neatly_recent_posts_thumbnail extends WP_Widget {
             </div>
             <div class="media-body">
                 <?php if($show_title == true): ?>
-                <h5 class="media-heading"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+                <h5 class="media-heading rp-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
                 <?php endif; ?>
 
                 <?php if($show_date == true): ?>
-                <p><?php the_date(); ?></p>
+                <p class="rp-date rp-info"><?php the_date(); ?></p>
                 <?php endif; ?>
 
 	            <?php if($show_read_more == true): ?>
-                    <p><a href="<?php the_permalink(); ?>">Read more</a></p>
+                    <p class="rp-readmore rp-info"><a href="<?php the_permalink(); ?>">Read more</a></p>
 	            <?php endif; ?>
             </div>
           </div>
