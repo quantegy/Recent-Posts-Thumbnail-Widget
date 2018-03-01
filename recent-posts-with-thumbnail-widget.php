@@ -95,11 +95,11 @@ class neatly_recent_posts_thumbnail extends WP_Widget {
 	            <?php endif; ?>
 
 	            <?php if($show_date == true): ?>
-                    <p><?php the_date(); ?></p>
+                    <p class="rp-date rp-info"><?php the_date(); ?></p>
 	            <?php endif; ?>
 
 	            <?php if($show_read_more == true): ?>
-                    <p><a href="<?php the_permalink(); ?>">Read more</a></p>
+                    <p class="rp-info rp-readmore"><a href="<?php the_permalink(); ?>">Read more</a></p>
 	            <?php endif; ?>
             </div>
           <?php endif; ?>
