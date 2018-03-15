@@ -72,7 +72,7 @@ class neatly_recent_posts_thumbnail extends WP_Widget {
           <?php if(has_post_thumbnail()): ?>
           <div class="media">
             <div class="media-left">
-                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail($thumbsize, ['class' => 'media-object', 'style' => 'width: 100px;']); ?></a>
+                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail($thumbsize, ['class' => 'media-object']); ?></a>
             </div>
             <div class="media-body">
                 <?php if($show_title == true): ?>
@@ -80,7 +80,7 @@ class neatly_recent_posts_thumbnail extends WP_Widget {
                 <?php endif; ?>
 
                 <?php if($show_date == true): ?>
-                <p class="rp-date rp-info"><?php the_date(); ?></p>
+                <p class="rp-date rp-info"><?php echo get_the_date(); ?></p>
                 <?php endif; ?>
 
 	            <?php if($show_read_more == true): ?>
@@ -95,7 +95,7 @@ class neatly_recent_posts_thumbnail extends WP_Widget {
 	            <?php endif; ?>
 
 	            <?php if($show_date == true): ?>
-                    <p><?php the_date(); ?></p>
+                    <p><?php echo get_the_date(); ?></p>
 	            <?php endif; ?>
 
 	            <?php if($show_read_more == true): ?>
