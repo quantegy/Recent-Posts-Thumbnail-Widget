@@ -89,9 +89,9 @@ class neatly_recent_posts_thumbnail extends WP_Widget {
             </div>
           </div>
           <?php else: ?>
-            <div>
+            <div class="no-media">
 	            <?php if($show_title == true): ?>
-                    <h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+                    <h5 class="rp-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 	            <?php endif; ?>
 
 	            <?php if($show_date == true): ?>
