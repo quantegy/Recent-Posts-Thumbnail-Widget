@@ -69,7 +69,7 @@ class neatly_recent_posts_thumbnail extends WP_Widget {
         $neatly_posts = new WP_Query($args);
         if( $neatly_posts->have_posts() ) {
           while( $neatly_posts->have_posts() ) : $neatly_posts->the_post(); ?>
-          <?php if(has_post_thumbnail()): ?>
+          <?php //if(has_post_thumbnail()): ?>
           <div class="media">
             <div class="media-left">
                 <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail($thumbsize, ['class' => 'media-object']); ?></a>
@@ -88,7 +88,7 @@ class neatly_recent_posts_thumbnail extends WP_Widget {
 	            <?php endif; ?>
             </div>
           </div>
-          <?php else: ?>
+          <?php /** else: ?>
             <div class="no-media">
 	            <?php if($show_title == true): ?>
                     <h5 class="rp-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
@@ -102,7 +102,7 @@ class neatly_recent_posts_thumbnail extends WP_Widget {
                     <p class="rp-info rp-readmore"><a href="<?php the_permalink(); ?>">Read more</a></p>
 	            <?php endif; ?>
             </div>
-          <?php endif; ?>
+          <?php endif; **/ ?>
 
           <?php endwhile;
         }
